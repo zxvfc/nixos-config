@@ -1,10 +1,18 @@
 {
 	inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-	outputs = { nixpkgs, ... }: {
-		nixosConfigurations.nixtest = nixpkgs.lib.nixosSystem {
+	outputs = { nixpkgs, ... }: let 
+		mk = extra: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
-			modules = [ ./hosts/nixtest ];
+			modules = [ 
+				./modules/common.nix
+				./hosts/nixtest 
+			] ++ extra;
+		};
+	in {
+		nixosConfigurations = {
+			nixtest = mk [ ];
+			nixtest-sway = mk [ ./modules/desktop-sway.nix ];
 		};
 	};
 }

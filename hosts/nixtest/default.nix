@@ -10,13 +10,12 @@
       ./hardware-configuration.nix
     ];
 
+  networking.hostName = "nixos"; # Define your hostname.
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.canTouchEfiVariables = false;
-
-  networking.hostName = "nixos"; # Define your hostname.
-  time.timeZone = "Asia/Bangkok";
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -66,12 +65,6 @@
   #   ];
   # };
 
-  users.users.zxvfc = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    initialPassword = "changeme";
-  };
-
   # programs.firefox.enable = true;
 
   # List packages installed in system profile.
@@ -80,11 +73,6 @@
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
   # ];
-
-  environment.systemPackages = with pkgs; [ 
-    neovim 
-    git 
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -109,17 +97,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  documentation.enable = false;
-  zramSwap.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
