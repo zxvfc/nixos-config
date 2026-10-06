@@ -8,5 +8,6 @@
 		enable = true;
 	};
 
+	programs.firefox.enable = true;
 	# environment.etc."sway/config.d/90-local.conf".text = '';
 }
