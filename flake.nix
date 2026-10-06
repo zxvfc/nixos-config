@@ -1,5 +1,5 @@
 {
-	input.nixpkgs.url = "github";
+	inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
 	outputs = { nixpkgs, ... }: {
 		nixosConfigurations.nixtest = nixpkgs.lib.nixosSystem {
