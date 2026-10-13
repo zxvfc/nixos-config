@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }: {
 	imports = [ ./hardware-configuration.nix ];
+	networking.hostName = "redmibook-15-amd-2021";
+
+	services.tuned.enable = true;
 
 	boot.loader.systemd-boot.enable = false;
 	boot.loader.grub.enable = false;
@@ -19,13 +22,13 @@
 		'';
 	};
 
-	networking.hostName = "redmibook-15-amd-2021";
-
-	age.identityPaths = [ "/home/zxvfc/.ssh/id_ed25519" ];
-	age.secrets.ssh_hosts = {
-  		file = ../../secrets/ssh_hosts.age;
-		owner = "zxvfc";
-		mode = "0400";
+	age = {
+		identityPaths = [ "/home/zxvfc/.ssh/id_ed25519" ];
+		secrets.ssh_hosts = {
+  			file = ../../secrets/ssh_hosts.age;
+			owner = "zxvfc";
+			mode = "0400";
+		};
 	};
 
 	system.stateVersion = "26.11";
