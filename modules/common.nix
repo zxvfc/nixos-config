@@ -3,18 +3,23 @@
 
 	time.timeZone = "Asia/Bangkok";
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	nix.settings.auto-optimise-store = true;
-	nix.gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 7d";
+	nix = {
+		settings = {
+			experimental-features = [ "nix-command" "flakes" ];
+			auto-optimise-store = true;
+		};
+		gc = {
+			automatic = true;
+			dates = "weekly";
+			options = "--delete-older-than 3d";
+		};
 	};
 
 	documentation.enable = false;
 	zramSwap.enable = true;
 
     	networking.networkmanager.enable = true;
+	systemd.services.NetworkManager-wait-online.enable = false;
 
 	environment.systemPackages = with pkgs; [ 
 		neovim 

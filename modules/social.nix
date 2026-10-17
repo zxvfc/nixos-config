@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-	envioronment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs; [
 		telegram-desktop
 		vesktop
 	];
