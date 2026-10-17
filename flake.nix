@@ -29,7 +29,10 @@
 		nixosConfigurations = {
 			nixtest = mk "nixtest" [ ];
 			nixtest-sway = mk "nixtest" [ ./modules/desktop-sway.nix ];
-			redmibook-15-amd-2021 = mk "redmibook-15-amd-2021" [ ./modules/desktop-sway.nix ];
+			redmibook-15-amd-2021 = mk "redmibook-15-amd-2021" [ 
+				./modules/desktop-sway.nix 
+				./modules/social.nix 
+			];
 		};
 	};
 }

@@ -34,9 +34,8 @@
 		tofi
 		alacritty
 		waybar
-		telegram-desktop
 		bibata-cursors
-    pavucontrol
+    		pavucontrol
 	];
 
 	fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
