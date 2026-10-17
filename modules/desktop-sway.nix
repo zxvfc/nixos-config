@@ -1,5 +1,6 @@
 { lib, pkgs, ... }: {
-	services.displayManager.ly.enable = true;
+	imports = [ ./ly ];
+	# services.displayManager.ly.enable = true;
 
 	xdg.portal = {
 		enable = true;
@@ -31,9 +32,11 @@
 	# environment.etc."sway/config.d/90-local.conf".text = '';
 	environment.systemPackages = with pkgs; [ 
 		tofi
-		alacritty 
+		alacritty
 		waybar
 		telegram-desktop
+		bibata-cursors
+    pavucontrol
 	];
 
 	fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
@@ -60,6 +63,8 @@
 
 		xdg.configFile = {
 			"sway".source = ../dotfiles/sway;
+			"gtk-3.0/settings.ini".source = ../dotfiles/gtk-3.0/settings.ini;
+			"gtk-4.0/settings.ini".source = ../dotfiles/gtk-4.0/settings.ini;
 			"alacritty".source = ../dotfiles/alacritty;
 			"waybar/config.jsonc".source = ../dotfiles/waybar/config.jsonc;
 			"waybar/style.css".source = ../dotfiles/waybar/style.css;

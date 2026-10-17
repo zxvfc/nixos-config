@@ -21,7 +21,7 @@
 				./hosts/${host}
 				agenix.nixosModules.default
 				({ pkgs, ... }: {
-					environment.systemPackages = [ agenix.packages.${pkgs.system}.default ];
+					environment.systemPackages = [ agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 				})
 			] ++ extra;
 		};

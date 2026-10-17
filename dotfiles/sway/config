@@ -22,6 +22,7 @@ set $term alacritty
 #set $menu wmenu-run
 set $menu tofi-run --num-results=5 --width=400 --height=400 | xargs swaymsg exec --
 
+seat * xcursor_theme Bibata-Modern-Classic 24
  
 ### Output configuration
 #

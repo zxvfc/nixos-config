@@ -2,6 +2,8 @@
 	imports = [ ./hardware-configuration.nix ];
 	networking.hostName = "redmibook-15-amd-2021";
 
+	hardware.bluetooth.enable = true;
+
 	services.tuned.enable = true;
 
 	boot.loader.systemd-boot.enable = false;
@@ -30,6 +32,8 @@
 			mode = "0400";
 		};
 	};
+
+	environment.systemPackages = [ pkgs.bluetui ];
 
 	system.stateVersion = "26.11";
 }
