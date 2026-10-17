@@ -17,9 +17,6 @@
   # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
