@@ -19,6 +19,11 @@
 		};
 	};
 
+	qt = {
+		enable = true;
+		platformTheme = "kde";
+	};
+
 	programs = {
 		sway = {
 			enable = true;
@@ -72,6 +77,8 @@
 			"sway".source = ../dotfiles/sway;
 			"gtk-3.0".source = ../dotfiles/gtk-3.0;
 			"gtk-4.0".source = ../dotfiles/gtk-4.0;
+			"kde-colors/dark.colors".source  = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
+			"kde-colors/light.colors".source = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeLight.colors";
 			"alacritty".source = ../dotfiles/alacritty;
 			"waybar/config.jsonc".source = ../dotfiles/waybar/config.jsonc;
 			"waybar/style.css".source = ../dotfiles/waybar/style.css;
