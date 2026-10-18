@@ -5,12 +5,13 @@
 	xdg.portal = {
 		enable = true;
 		extraPortals = [
+			pkgs.kdePackages.xdg-desktop-portal-kde
 			pkgs.xdg-desktop-portal-gtk
 			pkgs.xdg-desktop-portal-wlr
 			pkgs.darkman
 		];
 		config.sway = {
-			default = [ "gtk" ];
+			default = lib.mkForce [ "kde" "gtk" ];
 			"org.freedesktop.impl.portal.Settings" = [ "darkman" ];
 			"org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
 			"org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
