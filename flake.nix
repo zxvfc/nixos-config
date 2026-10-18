@@ -10,9 +10,13 @@
 			url = "github:ryantm/agenix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nix-on-droid = {
+			url = "github:nix-community/nix-on-droid";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, agenix, ... }: let
+	outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, ... }: let
 		mk = host: extra: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
@@ -33,6 +37,13 @@
 				./modules/desktop-sway.nix 
 				./modules/social.nix 
 			];
+		};
+		nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+			pkgs = import nixpkgs {
+				system = "aarch64-linux";
+				overlays = [ nix-on-droid.overlays.default ];
+			};
+			modules = [ ./hosts/phone ];
 		};
 	};
 }
