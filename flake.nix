@@ -1,5 +1,6 @@
 {
 	inputs = {
+		self.submodules = true;
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -10,7 +11,7 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nix-on-droid = {
-			url = "github:nix-community/nix-on-droid";
+			url = "github:newAM/nix-on-droid/update-proot";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
