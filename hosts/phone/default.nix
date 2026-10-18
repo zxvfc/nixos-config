@@ -7,6 +7,7 @@
 		openssh
 		bat
 		gnugrep
+		ncurses
 	];
 
 	nix.extraOptions = ''
