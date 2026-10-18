@@ -6,6 +6,7 @@
 		git
 		openssh
 		bat
+		grep
 	];
 
 	nix.extraOptions = ''
