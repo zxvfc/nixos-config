@@ -20,9 +20,14 @@
 
     	networking.networkmanager.enable = true;
 	systemd.services.NetworkManager-wait-online.enable = false;
+	programs.neovim = {
+		enable = true;
+		defaultEditor = true;
+		viAlias = true;
+		vimAlias = true;
+	};
 
 	environment.systemPackages = with pkgs; [ 
-		neovim 
 		git 
 		bat
     # util-linux

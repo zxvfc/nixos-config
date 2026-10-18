@@ -1,16 +1,17 @@
 { lib, pkgs, ... }: {
 	imports = [ ./ly ];
-	# services.displayManager.ly.enable = true;
 
 	xdg.portal = {
 		enable = true;
-		extraPortals = [
-			pkgs.xdg-desktop-portal-gtk
-			pkgs.xdg-desktop-portal-wlr
-			pkgs.darkman
+		extraPortals = with pkgs; [
+			xdg-desktop-portal-termfilechooser
+			xdg-desktop-portal-gtk
+			xdg-desktop-portal-wlr
+			darkman
 		];
 		config.sway = {
 			default = [ "gtk" ];
+			"org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
 			"org.freedesktop.impl.portal.Settings" = [ "darkman" ];
 			"org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
 			"org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
@@ -33,11 +34,16 @@
 	environment.sessionVariables.WLR_RENDERER = "vulkan";
 	environment.systemPackages = with pkgs; [ 
 		tofi
+		libnotify
+		mako
 		alacritty
 		waybar
 		bibata-cursors
- 		pavucontrol
+		wiremix
 		wl-clipboard
+		yazi
+		grim
+		slurp
 	];
 
 	fonts.packages = with pkgs; [ 
@@ -72,6 +78,12 @@
 			"gtk-3.0".source = ../dotfiles/gtk-3.0;
 			"gtk-4.0".source = ../dotfiles/gtk-4.0;
 			"alacritty".source = ../dotfiles/alacritty;
+			"xdg-desktop-portal-termfilechooser".source = ../dotfiles/xdg-desktop-portal-termfilechooser;
+			"xdg-desktop-portal-wlr/config".text = ''
+				[screencast]
+				chooser_type=dmenu
+				chooser_cmd=${pkgs.tofi}/bin/tofi
+			'';
 			"waybar/config.jsonc".source = ../dotfiles/waybar/config.jsonc;
 			"waybar/style.css".source = ../dotfiles/waybar/style.css;
 			"waybar/dark.css".source = ../dotfiles/waybar/dark.css;

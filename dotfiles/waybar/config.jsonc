@@ -206,6 +206,7 @@
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
+    "on-click": "alacritty --class audiomixer -e wiremix",
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
@@ -224,8 +225,7 @@
         " ",
         "  "
       ]
-    },
-    "on-click": "pavucontrol"
+    }
   },
   // "custom/media": {
   //     "format": "{icon} {text}",
