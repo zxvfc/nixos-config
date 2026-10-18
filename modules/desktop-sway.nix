@@ -36,7 +36,10 @@
 	};
 
 	# environment.etc."sway/config.d/90-local.conf".text = '';
-	environment.sessionVariables.WLR_RENDERER = "vulkan";
+	environment.sessionVariables = {
+		WLR_RENDERER = "vulkan";
+		QT_QPA_PLATFORMTHEME = "kde";
+	};
 	environment.systemPackages = with pkgs; [ 
 		tofi
 		alacritty
