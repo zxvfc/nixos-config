@@ -88,6 +88,8 @@
 			"waybar/style.css".source = ../dotfiles/waybar/style.css;
 			"waybar/dark.css".source = ../dotfiles/waybar/dark.css;
 			"waybar/light.css".source = ../dotfiles/waybar/light.css;
+			"tofi/github_dark_high_contrast.conf".source = ../dotfiles/tofi/github_dark_high_contrast.conf;
+			"tofi/github_light_high_contrast.conf".source = ../dotfiles/tofi/github_light_high_contrast.conf;
 		};
 		xdg.dataFile."darkman/switch.sh" = {
 			source = ../dotfiles/darkman/switch.sh;
