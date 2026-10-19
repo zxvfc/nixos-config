@@ -54,7 +54,6 @@
 
 	home-manager.backupFileExtension = "backup";
 	home-manager.users.zxvfc = { ... }: {
-		home.stateVersion = "26.11";
 
 		services.darkman.enable = true;
 

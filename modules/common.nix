@@ -36,6 +36,8 @@
     # iw
 	];
 
+	home-manager.users.zxvfc.home.stateVersion = "26.11";
+
 	users.users.zxvfc = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "networkmanager" ];
