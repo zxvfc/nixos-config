@@ -1,0 +1,12 @@
+include=/home/zxvfc/.config/mako/colors
+
+font=FiraCode Nerd Font Mono 11
+width=360
+padding=12
+margin=10
+border-size=2
+border-radius=0
+default-timeout=5000
+
+[urgency=high]
+default-timeout=0
