@@ -32,7 +32,15 @@
 			redmibook-15-amd-2021 = mk "redmibook-15-amd-2021" [ 
 				./modules/desktop-sway.nix 
 				./modules/social.nix 
+				./modules/dev.nix 
 			];
+		};
+
+		templates = {
+			jvm = {
+				path = ./templates/jvm;
+				description = "Java/Kotlin dev shell";
+			};
 		};
 	};
 }
