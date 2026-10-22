@@ -1,6 +1,5 @@
 {
 	inputs = {
-		self.submodules = true;
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -13,6 +12,10 @@
 		disko = {
 			url = "github:nix-community/disko";
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		alacritty-theme = {
+			url = "github:alacritty/alacritty-theme";
+			flake = false;
 		};
 	};
 
