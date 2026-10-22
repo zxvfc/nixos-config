@@ -1,7 +1,6 @@
-{ lib, pkgs, ... }: {
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+{ pkgs, inputs, ... }: {
 
-	time.timeZone = "Asia/Bangkok";
+	imports = [ inputs.agenix.nixosModules.default ];
 
 	nix = {
 		settings = {
@@ -18,8 +17,6 @@
 	documentation.enable = false;
 	zramSwap.enable = true;
 
-    	networking.networkmanager.enable = true;
-	systemd.services.NetworkManager-wait-online.enable = false;
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
@@ -30,16 +27,10 @@
 	environment.systemPackages = with pkgs; [ 
 		git 
 		bat
+		inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # util-linux
     # coreutils
     # gnugrep
     # iw
 	];
-
-	home-manager.users.zxvfc.home.stateVersion = "26.11";
-
-	users.users.zxvfc = {
-		isNormalUser = true;
-		extraGroups = [ "wheel" "networkmanager" ];
-	};
 }

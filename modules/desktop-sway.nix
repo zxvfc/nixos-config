@@ -1,5 +1,9 @@
 { lib, pkgs, ... }: {
+
+
 	imports = [ ./ly ];
+
+	systemd.services.NetworkManager-wait-online.enable = false;
 
 	xdg.portal = {
 		enable = true;
@@ -57,6 +61,8 @@
 
 	home-manager.backupFileExtension = "backup";
 	home-manager.users.zxvfc = { ... }: {
+		home.stateVersion = "26.11";
+
 
 		services.darkman.enable = true;
 
