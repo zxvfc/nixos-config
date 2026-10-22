@@ -24,9 +24,8 @@
 
 	};
 
-	outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, ... }: let
-		mk = host: extra: nixpkgs.lib.nixosSystem {
-
+	outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, ... }@inputs: let
+		mk = { host, profile, extra ? [ ] }: nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
