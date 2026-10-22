@@ -17,10 +17,16 @@
 			url = "github:alacritty/alacritty-theme";
 			flake = false;
 		};
+		nix-on-droid = {
+			url = "github:newAM/nix-on-droid/update-proot";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 	};
 
-	outputs = { nixpkgs, ... }@inputs: let
-		mk = { host, profile, extra ? [ ] }: nixpkgs.lib.nixosSystem {
+	outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, ... }: let
+		mk = host: extra: nixpkgs.lib.nixosSystem {
+
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
@@ -39,6 +45,13 @@
 				];
 			};
 			server = mk { host = "server"; profile = "server"; };
+		};
+		nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+			pkgs = import nixpkgs {
+				system = "aarch64-linux";
+				overlays = [ nix-on-droid.overlays.default ];
+			};
+			modules = [ ./hosts/phone ];
 		};
 
 		templates = {
