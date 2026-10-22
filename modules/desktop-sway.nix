@@ -1,5 +1,9 @@
 { lib, pkgs, ... }: {
+
+
 	imports = [ ./ly ];
+
+	systemd.services.NetworkManager-wait-online.enable = false;
 
 	xdg.portal = {
 		enable = true;
@@ -57,6 +61,8 @@
 
 	home-manager.backupFileExtension = "backup";
 	home-manager.users.zxvfc = { ... }: {
+		home.stateVersion = "26.11";
+
 
 		services.darkman.enable = true;
 
@@ -80,6 +86,7 @@
 			"gtk-3.0".source = ../dotfiles/gtk-3.0;
 			"gtk-4.0".source = ../dotfiles/gtk-4.0;
 			"alacritty".source = ../dotfiles/alacritty;	
+			"alacritty-themes".source = "${pkgs.alacritty-theme}/share/alacritty-theme";
 			"waybar/config.jsonc".source = ../dotfiles/waybar/config.jsonc;
 			"waybar/style.css".source = ../dotfiles/waybar/style.css;
 			"waybar/dark.css".source = ../dotfiles/waybar/dark.css;
