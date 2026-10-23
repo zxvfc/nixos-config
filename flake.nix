@@ -44,7 +44,8 @@
 					./modules/droidcam.nix
 				];
 			};
-			server = mk { host = "server"; profile = "server"; };
+			server-a = mk { host = "server-a"; profile = "server"; };
+			server-b = mk { host = "server-b"; profile = "server"; };
 		};
 		nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
 			pkgs = import nixpkgs {
