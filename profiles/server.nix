@@ -12,5 +12,5 @@ in {
 	};
 	# networking.firewall.enable = true;
 
-	users.users.root.openssh.authorizedKeys.keys = keys.zxvfc;
+	users.users.root.openssh.authorizedKeys.keys = keys.zxvfc ++ keys.asus;
 }

@@ -41,7 +41,10 @@
 		};
 	};
 
-	environment.systemPackages = [ pkgs.bluetui ];
+	environment.systemPackages = [ 
+		pkgs.bluetui
+		pkgs.cloudflared
+	];
 
 	system.stateVersion = "26.11";
 }
