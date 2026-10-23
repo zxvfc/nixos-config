@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: let 
 	keys = import ../../modules/keys.nix;
-	authorizedKeys = pkgs.writeText."authorized_keys" (lib.concatStringsSep "\n" keys.zxvfc);
+	authorizedKeys = pkgs.writeText "authorized_keys" (lib.concatStringsSep "\n" keys.zxvfc);
 	sshDir = "${config.user.home}/sshd";
 in {
 	system.stateVersion = "24.05";
