@@ -41,6 +41,7 @@
 					./modules/desktop-sway.nix 
 					./modules/social.nix 
 					./modules/dev.nix 
+					./modules/droidcam.nix
 				];
 			};
 			server = mk { host = "server"; profile = "server"; };
