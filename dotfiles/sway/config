@@ -75,6 +75,8 @@ input type:touchpad {
   drag_lock disable
 }
 
+primary_selection disabled
+
 input type:keyboard {
 	xkb_layout "us,ru"
 	xkb_options grp:caps_toggle
