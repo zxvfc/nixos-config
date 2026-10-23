@@ -27,6 +27,7 @@
 	environment.systemPackages = with pkgs; [ 
 		git 
 		bat
+		jq
 		inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # util-linux
     # coreutils
