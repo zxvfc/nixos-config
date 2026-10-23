@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: let 
 	keys = import ../../modules/keys.nix;
-	authorizedKeys = pkgs.writeText."authorized_keys" (lib.concatStringSep. "\n" keys.zxvfc);
+	authorizedKeys = pkgs.writeText."authorized_keys" (lib.concatStringsSep "\n" keys.zxvfc);
 	sshDir = "${config.user.home}/sshd";
 in {
 	system.stateVersion = "24.05";
@@ -15,7 +15,6 @@ in {
 		bat
 		gnugrep
 		ncurses
-		openssh
 		cloudflared
 
 		(writeScriptBin "sshd-start" ''
@@ -31,7 +30,7 @@ in {
 
 	build.activation.sshd = ''
 		$DRY_RUN_CMD mkdir -p "${config.user.home}/.ssh" "${sshDir}"
-		$DRY_RUN_CMD install -m 600 ${authorizedKeys} "${config.user.home}"/.ssh/authorized_keys"
+		$DRY_RUN_CMD install -m 600 ${authorizedKeys} "${config.user.home}/.ssh/authorized_keys"
 		if [ ! -f "${sshDir}/ssh_host_ed25519_key" ]; then
 			$DRY_RUN_CMD ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -N "" -f "${sshDir}/ssh_host_ed25519_key"
 		fi
