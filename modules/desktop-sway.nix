@@ -51,6 +51,13 @@
 		yazi
 		grim
 		slurp
+
+		gcc
+		tree-sitter
+		ripgrep
+		fd
+		lazygit
+		nodejs
 	];
 
 	fonts.packages = with pkgs; [ 
@@ -60,7 +67,7 @@
 	];
 
 	home-manager.backupFileExtension = "backup";
-	home-manager.users.zxvfc = { ... }: {
+	home-manager.users.zxvfc = { config, ... }: {
 		home.stateVersion = "26.11";
 
 
@@ -81,7 +88,7 @@
 		};
 
 		xdg.configFile = {
-			"nvim".source = ../dotfiles/nvim;
+			"nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/zxvfc/nixos-config/dotfiles/nvim";
 			"sway".source = ../dotfiles/sway;
 			"gtk-3.0".source = ../dotfiles/gtk-3.0;
 			"gtk-4.0".source = ../dotfiles/gtk-4.0;
