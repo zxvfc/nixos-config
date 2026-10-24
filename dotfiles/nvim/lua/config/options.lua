@@ -15,4 +15,4 @@ vim.lsp.config('kmp-lsp', {
 })
 vim.lsp.enable('kmp-lsp')
 
-vim.opt.relativenumbers = false
+vim.opt.relativenumber = false
