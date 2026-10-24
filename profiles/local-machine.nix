@@ -13,5 +13,6 @@
 	users.users.zxvfc = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "networkmanager" ];
+		shell = pkgs.zsh;
 	};
 }
