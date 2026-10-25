@@ -42,6 +42,7 @@
 					./modules/social.nix 
 					./modules/dev.nix 
 					./modules/droidcam.nix
+          ./modules/gaming.nix
 				];
 			};
 			server-a = mk { host = "server-a"; profile = "server"; };
