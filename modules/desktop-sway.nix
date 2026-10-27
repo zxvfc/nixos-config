@@ -125,7 +125,6 @@
       };
       mimeApps =
         let
-          ff = "firefox.desktop";
           types = [
             # web
             "text/html"
@@ -153,10 +152,17 @@
             "audio/flac"
             "audio/wav"
           ];
+          firefoxFor = builtins.listToAttrs (
+            map (t: {
+              name = t;
+              value = "firefox.desktop";
+            }) types
+          );
         in
         {
           enable = true;
-          defaultApplications = lib.genAttrs types (_: ff);
+          associations.added = firefoxFor;
+          defaultApplications = firefoxFor;
         };
     };
   };

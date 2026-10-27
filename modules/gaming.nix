@@ -1,4 +1,4 @@
-{ lib, pkgs, ...}: {
+{ lib, pkgs, ... }: {
   programs = {
     steam = {
       enable = true;
@@ -14,12 +14,17 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-unwrapped"
-    "steam-run"
-  ];
+  environment.systemPackages = [ pkgs.xdotool ];
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+    ];
 }
