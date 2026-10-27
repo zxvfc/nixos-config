@@ -37,6 +37,7 @@
   environment.sessionVariables = {
     WLR_RENDERER = "vulkan";
     QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
+    QT_WIDGETS_RHI_BACKEND = "vulkan";
   };
   environment.systemPackages = with pkgs; [
     tofi
