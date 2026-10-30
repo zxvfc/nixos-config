@@ -20,6 +20,15 @@
       "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       "org.freedesktop.impl.portal.Inhibit" = [ "none" ];
     };
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          chooser_type = "dmenu";
+          chooser_cmd = "${pkgs.tofi}/bin/tofi";
+        };
+      };
+    };
   };
 
   programs = {
@@ -114,11 +123,6 @@
         "mako/github_light_high_contrast.conf".source = ../dotfiles/mako/github_light_high_contrast.conf;
 
         "xdg-desktop-portal-termfilechooser".source = ../dotfiles/xdg-desktop-portal-termfilechooser;
-        "xdg-desktop-portal-wlr/config".text = ''
-          				[screencast]
-          				chooser_type=dmenu
-          				chooser_cmd=${pkgs.tofi}/bin/tofi
-          			'';
       };
       dataFile."darkman/switch.sh" = {
         source = ../dotfiles/darkman/switch.sh;
