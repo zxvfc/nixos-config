@@ -17,7 +17,7 @@ return {
     opts = {
       formatters_by_ft = {
         kotlin = {
-          "ktrs",
+          -- "ktrs",
           "ktrs_lint",
         }
       },
@@ -37,6 +37,16 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
-    opts = { linters_by_ft = { kotlin = { "ktlint" } } },
+    opts = {
+      linters_by_ft = { kotlin = { "ktlint" } }
+    }
+    -- event = { "BufReadPost", "BufWritePost" },
+    -- config = function()
+    --   local lint = require("lint")
+    --   lint.linters_by_ft = { kotlin = { "ktlint" } }
+    --   vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
+    --     callback = function() lint.try_lint() end,
+    --   })
+    -- end
   },
 }
