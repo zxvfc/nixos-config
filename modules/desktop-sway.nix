@@ -71,6 +71,8 @@
     fd
     lazygit
     nodejs
+
+    ungoogled-chromium
   ];
 
   fonts.packages = with pkgs; [
