@@ -32,6 +32,7 @@
     bat
     jq
     gnumake
+    unzip
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # util-linux
     # coreutils
