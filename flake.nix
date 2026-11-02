@@ -71,6 +71,7 @@
             ./modules/droidcam.nix
             ./modules/gaming.nix
             ./modules/audio.nix
+            ./modules/gamedev.nix
           ];
         };
         server-a = mk {
