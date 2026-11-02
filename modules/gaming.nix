@@ -17,7 +17,10 @@
     enable32Bit = true;
   };
 
-  environment.systemPackages = [ pkgs.xdotool ];
+  environment.systemPackages = [
+    pkgs.xdotool
+    pkgs.xrandr
+  ];
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
