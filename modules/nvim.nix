@@ -3,6 +3,7 @@
     nixd
     nixfmt
     statix
+    docker-language-server
 
     gcc
     tree-sitter
