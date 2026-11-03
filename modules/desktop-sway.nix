@@ -60,18 +60,6 @@
     yazi
     grim
     slurp
-
-    nixd
-    nixfmt
-    statix
-
-    gcc
-    tree-sitter
-    ripgrep
-    fd
-    lazygit
-    nodejs
-
     ungoogled-chromium
   ];
 
@@ -103,7 +91,6 @@
 
     xdg = {
       configFile = {
-        "nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/zxvfc/nixos-config/dotfiles/nvim";
         "sway".source = ../dotfiles/sway;
         "gtk-3.0".source = ../dotfiles/gtk-3.0;
         "gtk-4.0".source = ../dotfiles/gtk-4.0;

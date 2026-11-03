@@ -72,6 +72,7 @@
             ./modules/gaming.nix
             ./modules/audio.nix
             ./modules/gamedev.nix
+            ./modules/containers.nix
           ];
         };
         server-a = mk {
