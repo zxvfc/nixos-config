@@ -2,9 +2,39 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+
     alsa.enable = true;
     pulse.enable = true;
     jack.enable = true;
+
+    extraConfig.pipewire."loopback" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-loopback";
+          args = {
+            "node.description" = "Mix";
+            "capture.props" = {
+              "node.name" = "mix_sink";
+              "media.class" = "Audio/Sink";
+              "audio.position" = [
+                "FL"
+                "FR"
+              ];
+            };
+            "playback.props" = {
+              "node.name" = "mix_source";
+              "media.class" = "Audio/Source";
+              "node.passive" = true;
+              "audio.position" = [
+                "FL"
+                "FR"
+              ];
+            };
+          };
+        }
+      ];
+    };
+
   };
   users.users.zxvfc.extraGroups = [ "audio" ];
   # Realtime privileges for the audio group
