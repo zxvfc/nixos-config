@@ -112,6 +112,8 @@
         "mako/github_light_high_contrast.conf".source = ../dotfiles/mako/github_light_high_contrast.conf;
 
         "xdg-desktop-portal-termfilechooser".source = ../dotfiles/xdg-desktop-portal-termfilechooser;
+
+        "pipewire".source = ../dotfiles/pipewire;
       };
       dataFile."darkman/switch.sh" = {
         source = ../dotfiles/darkman/switch.sh;
