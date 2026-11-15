@@ -4,6 +4,7 @@
     nixfmt
     statix
     docker-language-server
+    gdtoolkit_4
 
     gcc
     tree-sitter
