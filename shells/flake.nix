@@ -7,6 +7,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       jdk = pkgs.jdk21;
+      py = pkgs.python314;
 
       kmp-lsp = pkgs.rustPlatform.buildRustPackage rec {
         pname = "kmp-lsp";
@@ -40,7 +41,34 @@
         pkgs.kotlin
         pkgs.ripgrep
         pkgs.fd
+        pkgs.pkg-config
+        pkgs.zlib
+        pkgs.zlib.dev
       ];
+
+      pythonPackages = [
+        py
+        pkgs.uv
+        pkgs.ruff
+        pkgs.basedpyright
+        pkgs.pyright
+        pkgs.ripgrep
+        pkgs.fd
+      ];
+      pythonHook = ''
+        export UV_PYTHON_DOWNLOADS=never
+        export LD_LIBRARBY_PATH="${
+          pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc.lib
+            pkgs.zlib
+          ]
+        }:''${LD_LIBRARBY_PATH:-}"
+        if [ ! -d .venv ]; then
+          uv venv
+        fi
+        source .venv/bin/activate
+      '';
+
       postgressPackages = [ pkgs.postgresql ];
       postgressHook = ''
         PG_NAME="$(basename "$PWD")"
@@ -57,6 +85,14 @@
     {
       devShells.${system} = {
         jvm = pkgs.mkShell { packages = jvmPackages; };
+        python = pkgs.mkShell {
+          packages = pythonPackages;
+          buildInputs = [
+            pkgs.zlib
+            pkgs.zlib.dev
+          ];
+          shellHook = pythonHook;
+        };
         postgress = pkgs.mkShell {
           packages = postgressPackages;
           shellHook = postgressHook;

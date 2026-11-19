@@ -3,6 +3,8 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = false
+vim.g.lazyvim_python_lsp = "basepyright"
+vim.g.lazyvim_python_ruff = "ruff"
 vim.filetype.add({
   filename = {
     ["docker-compose.yml"] = "yaml.docker-compose",
